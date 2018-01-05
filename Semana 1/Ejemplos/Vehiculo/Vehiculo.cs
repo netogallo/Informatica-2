@@ -102,6 +102,16 @@ namespace Vehiculo
             this.dy = dx;
         }
 
+        /*
+        Propiedad que permite obtener de forma conveniente
+        la distancia del vehiculo al origen (0,0)
+        */
+        public double Distancia{
+            get{
+                return Math.Sqrt(Math.Pow(this.x, 2) + Math.Pow(this.y, 2));
+            }
+        }
+
         public override string ToString(){
             return $"Nombre: {this.Nombre}\nUbicacion: ({this.X}, {this.Y})";
         }
