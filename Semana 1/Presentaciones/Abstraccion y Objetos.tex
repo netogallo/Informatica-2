@@ -14,7 +14,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 
-\title[Git]{Abstracci\'on y objetos}
+\title[Git]{Abstracci\'on, claes y objetos}
 \author{Ernesto Rodriguez}
 \institute{
     Universidad del Itsmo \\
@@ -114,6 +114,7 @@
     \item Consequentemente, un m\'etodo puede modificar el \emph{estado} de un objeto.
     \item La palabra reservada \emph{this} se utiliza para acceder propiedades y metodos del objeto al que le pertence el metodo.
     \item El metodo puede recibir parametros que pueda necesitar para realizar su trabajo.
+    \item El metodo puede retornar un valor si lo desea.
 \end{itemize}
 \end{frame}
 
@@ -123,14 +124,58 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Metodos puros y efectos secundarios}
+    \begin{itemize}
+        \item Toda modificaci\'on al estado del objeto o del programa realizada por un metodo se llama \emph{efecto.}
+        \item Los efectos causados por un metodo pueden cambiar el comportamiento de otros metodos.
+        \item{Los metodos que no causan efectos y no son afectados por efectos de otros metodos
+        se llaman \emph{metodos puros}. Dichos, metodos son equivalentes a una funci\'on matematica.}
+        \item{Los efectos dificultan poder r\'azonar sobre un programa y lo pueden volver impredecible.}
+        \item{En el mundo ideal, un programa seria una funci\'on libre de efectos (ej. Haskell\cite{Haskell}),
+        pero esto entra en conflicto con el proposito del programa, que es tener un efecto.}
+        \item{Un metodo deberia tener {\bf un} solo proposito y cumplir dicho proposito
+        con la {\bf menor} cantidad de efectos posibles.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{M\'etodo constructor}
 \begin{itemize}
     \item Metodo encargado de colocar a un objeto en su estado inicial.
-    \item Solamente es llamado cuando un objeto nevo es creado.
+    \item Solamente es llamado cuando un objeto nuevo es creado.
     \item Puede ser publico o privado.
     \item Se declara mediante el nombre de la clase.
     \item Se llama mediante la palabra reservada \emph{new}.
+    \item{No retorna ning\'un valor.}
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Propiedades calculadas}
+    \begin{itemize}
+        \item Un tipo especial de metodo disponible en C\# y algunos otros lenguajes.
+        \item La operaci\'on de lectura se define mediante la palabra \texttt{get}
+        \item La operaci\'on de escritura se define mediante la palabra \texttt{set}.
+        \item La operaci\'on de lectura {\bf no} debe causar ningun efecto.
+        \item La oparaci\'on de escritura {\bf solamente} debe tener como efecto modificar la propiedad.
+        \item Ejemplo: Distancia del origen.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Principio de \'unica responsabilidad}
+    \begin{itemize}
+        \item{En general, los objetos representados por clases pueden ser complejos.}
+        \item{Sin embargo, es importante que las clases tengan solamente {\bf una} responsabilidad.}
+        \item{Las clases complejas crean archivos largos y dificultan el razonamiento.}
+        \item{Definir una clase a partir de clases m\'as simples se conoce como \emph{composici\'on}.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Referencias}
+    \bibliography{../../Referencias/referencias}
+    \bibliographystyle{plain}
 \end{frame}
 
 \end{document}
