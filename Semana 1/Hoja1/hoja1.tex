@@ -103,7 +103,7 @@
 \begin{center}
         \horrule{0.5pt}
         \huge{Hoja de trabajo \#1} \\
-        \large{Fecha de entrega: 25 de Enero, 2018} \\
+        \large{Fecha de entrega: 25 de Enero, 2018 - 11:59pm} \\
         \horrule{1pt}
 \end{center}
 
@@ -111,12 +111,123 @@
 instrucciones. El trabajo debe ser entregado a traves de Github, en su repositorio del curso, colocado en una carpeta llamada "Hoja de trabajo 1".
 Al menos que la pregunta indique diferente, todas las respuestas a preguntas escritas deben presentarse en
 un documento formato pdf, el cual haya sido generado mediante Latex. Los ejercicios de programaci\'on deben ser colocados en una carpeta
-llamada "Programas", la cual debe colocarse dentro de la carpeta correspondiente a esta hoja de trabajo.}
+llamada ``Programas", la cual debe colocarse dentro de la carpeta correspondiente a esta hoja de trabajo.}
 
 % \perlscript{homework_example}{Sample Perl Script With Highlighting}
 
-\section*{Ejercicio \#1}
+\section*{Iniciaci\'on}
+\begin{enumerate}
+        \item{Si no la tiene, crear una cuenta en \href{https://github.com/}{Github}.}
+        \item{Crear un repositorio\cite{GitRepo} para los deberes correspondientes a este curso en Github.}
+        \item{Enviar su usuario de Github y link de su repositorio al profesor
+        \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt}.}
+        \item{Tomar en cuenta que estea hoja
+        (y las hojas restantes del curos) deben ser entregadas mediante un commit
+        en el repositorio creado en el articulo 2 de Github. En la fecha y hora de entrega,
+        el profesor copiara el estado acutal del repositorio y calificara ese material. Por
+        favor asegurarse que todos los cambios esten \emph{empujados} (\texttt{git push}) en el
+        repositorio antes de la fecha de entrega. Esto se puede revisar accediendo el sitio
+        Github y ver que todos los archivos necesarios esten presentes en el repositorio.}
+        \item{El ``Ejercicio \#1'' y ``Ejercicio \#4'' le ayudaran a publicar correctamente
+        el trabajo en Github. Si aun tiene dudas, por favor contactar al profesor.}
+        \item{Para hacer esta hoja de trabajo, necesitara Latex\cite{LatexPage}. Para trabajar
+        con archivos Latex (``*.tex'') se recomienda utilizar un editor. La \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{extension de
+        Latex} para \emph{Visual Studio Code} es excelente, pero t\'ambien se puede utilizar
+        un programa como \href{http://www.xm1math.net/texmaker/}{Texmaker}. Asegurese
+        de configurar Latex de manera que pueda producir archivos \emph{PDF}.}
+        \item{El Wiki de Latex\cite{Latex} es un buen lugar para consultar el formato.}
+\end{enumerate}
 
-Descargar e instalar el framework \emph{.Net Core} desde \url{https://www.microsoft.com/net/learn/get-started/windows}
+\section*{Ejercicio \#1 (5\%)}
+\begin{enumerate}
+        \item{
+                Si no lo ha hecho, crear un repositorio en Github para alojar
+                las hojas de trabajo.}
+        \item{
+                Luego de haber creado un repositorio, debe clonar el repositorio
+                a una carpeta local mediante el comando \texttt{git clone [url]} el cual
+                puede ser ejecutado desde la terminal (Linux y Mac) o desde la consola
+                \emph{Git Bash} (en Windows). Para mayor
+                facilidad, utilizar un url tipo \emph{https}. Sin embargo para mayor
+                seguridad y conveniencia se recomienda usar \emph{ssh}\cite{GithubSsh}.
+                Como ejemplo, este comando clonaria el repositorio de este curso: \\
+                \texttt{git clone https://github.com/netogallo/Informatica-2.git}
+        }
+        \item{
+                Luego de haber clonado el repositorio, se creara una carpeta
+                con el nombre del repositorio dentro de la carpeta donde se
+                haya ejecutado el comando anterior.
+        }
+\end{enumerate}
+
+\section*{Ejercicio \#2 (80\%)}
+El proyecto ``QueHaceres" constara de dos objetos reales. Un
+``Que hacer" el cual corresponde a un deber o obligaci\'on que
+necesitamos cumplir, la cual no tiene \emph{ninguna} fecha limite.
+Un ``Que hacer" puede estar completado o en progreso.
+
+El segundo objeto es una lista de ``Que haceres", la cual permite agregar
+nuevos ``Que haceres", visualizar todos los ``Que haceres" disponibles y
+marcar un ``Que hacer" como terminado.
+
+\begin{enumerate}
+        \item{
+                Describir al objeto concreto ``Que Hacer" mediante un objeto
+                abstracto. Listar todos los attributos que tendra el objeto
+                abstracto y el tipo de cada atributo.}
+        \item{
+                Describir al objeto concreto ``Que haceres" mediante un objeto
+                abstracto. Listar todos los atributos que tendra el objeto abstracto
+                y el tipo de cada atributo.
+        }
+\end{enumerate}
+
+\section*{Ejercicio \#3 (10\%)}
+Crear un archivo \emph{.gitignore} en la carpeta principal de este repositorio.
+Asegurarse que git excluya todos los archivos menos los terminados en ``.tex'' y ``.pdf''.
+
+\section*{Ejercicio \#4 (5\%)}
+Luego de haber terminado los ejercicios anteriores, su trabajo debe
+ser publicado a github. Para publicar a Github utilizando Git se procede
+de la siguiente manera:
+\begin{enumerate}
+        \item {
+                El comando \texttt{git status} listara todos los
+                cambios pendientes por agregar al repositorio. Si no
+                ha agregado ningun archivo al repositorio, listara todas
+                las carpetas y el archivo \emph{.gitignore} dentro de la
+                carpeta del proyecto.
+        }
+        \item{
+                El comando \texttt{git add [archivos]} permite agregar
+                archivos a la siguiente revision de git. Como atajo,
+                puede ejecutar \texttt{git add .} para agregar todos
+                los cambios que hay en el repositorio.
+        }
+        \item {
+                El comando \texttt{git status} ahora indicara los archivos
+                nuevos que hay en el repositorio. Si su archivo \emph{.gitignore}
+                esta formateado correctamente, solo deberian agregarse:
+                \begin{itemize}
+                        \item{El archivo \emph{.gitignore}}
+                        \item{El archivo \emph{pdf} correspondiente a esta hoja de trabajo}
+                        \item{El archivo \emph{tex} correspondiente a esta hoja de trabajo}
+                        \item{Un posible archivo o carpeta de configuraci\'on del editor.
+                        El caso de ``Visual Studio Code'' sera una carpeta llamada \emph{.vscode}.}
+                \end{itemize}
+        }
+        \item{
+                Si el paso anterior muesta archivos extra (``*.aux'', ``*.log'', ``*.out'', ect...),
+                debera componer su archivo \emph{.gitignore}. Para hacerlo, primero
+                debe ejecutar el comando \texttt{git reset HEAD .}, el cual quitara
+                todos los archivos de la lista de cambios. Luego modifique su archivo \emph{.gitignore}
+                adecuadamente y vuelba a ejecutar \texttt{git add .}. Repetir hasta
+                que la lista de archivos nuevos corresponda a la indicada en el paso \#3.
+        }
+\end{enumerate}
+
+
+\bibliography{../../Referencias/referencias}
+\bibliographystyle{plain}
 
 \end{document}
