@@ -9,6 +9,8 @@ namespace Vehiculo
     class Vehiculo
     {
 
+        private int velocidad;
+
         /*
         A continuacion definimos un constructor que permite
         crear instancias de vehiculos.
@@ -19,6 +21,7 @@ namespace Vehiculo
             this.dy = 0;
             this.x = 0;
             this.y = 0;
+            this.velocidad = 1;
         }
 
         /*
@@ -80,8 +83,12 @@ namespace Vehiculo
         en su direccion actual.
         */
         public void Avanzar(){
-            this.x += this.dx;
-            this.y += this.dy;
+            this.x += this.dx * this.velocidad;
+            this.y += this.dy * this.velocidad;
+        }
+
+        public void Acelerar(int cantidad){
+            this.velocidad += cantidad;
         }
 
         /*
