@@ -1,7 +1,7 @@
 using System;
 public class Vehiculo{
 
-    const double VELOCIDAD_MAXIMA = 1.0;
+    public virtual double VelocidadMaxima{get;} = 1;
 
     /*
     Las propiedades son metodos ligeros que no deben modificar
@@ -19,8 +19,33 @@ public class Vehiculo{
 
     public Vector Posicion{get;}
 
+    public Vehiculo(){
+        this.Velocidad = this.VelocidadMaxima;
+        this.Direccion = new Vector();
+        this.Direccion.Sumar(1,0);
+        this.Posicion = new Vector();
+    }
+
+    /**
+    Definimos un metodo virtual, de tal manera que el comportamiento
+    de ese metodo pueda ser cambiado por las sub-clases de esta
+    clase.
+    */
+    protected virtual bool PosicionEsValida(double x, double y){
+
+        Terreno[][] mapa = Mapas.Lago;
+        return x >= 0 && x < mapa.Length
+            && y >= 0 && mapa[(int)x].Length > y;
+    }
+
     public void Avanzar(){
-        this.Direccion.Sumar(this.Posicion.X*this.Velocidad, this.Posicion.Y*this.Velocidad);
+
+        double newX = this.Posicion.X + this.Direccion.X*this.Velocidad;
+        double newY = this.Posicion.Y + this.Direccion.Y*this.Velocidad;
+
+        if(this.PosicionEsValida(newX, newY)){
+            this.Posicion.Sumar(this.Direccion.X*this.Velocidad, this.Direccion.Y*this.Velocidad);
+        }
     }
 
     public void Rotar(double angulo){
@@ -50,9 +75,9 @@ public class Vehiculo{
 
         this.Rotar(angulo);
 
-        double velocidad = VELOCIDAD_MAXIMA;
+        double velocidad = this.VelocidadMaxima;
 
-        if(VELOCIDAD_MAXIMA > magDir){
+        if(this.VelocidadMaxima > magDir){
             velocidad = magDir;
         }
 

@@ -6,8 +6,12 @@ namespace Ejemplo2
     {
         static void Main(string[] args)
         {
-            Vehiculo v = new Vehiculo();
-            Console.WriteLine($"Hello World! {v.Velocidad}");
+            Vehiculo vehiculo = new Vehiculo();
+            Carro carro = new Carro();
+            carro.Avanzar();
+            vehiculo.Avanzar();
+            Console.WriteLine($"La coordenada del carro en X es: {carro.Posicion.X}");
+            Console.WriteLine($"La coordenada del vehiculo en X es: {vehiculo.Posicion.X}");
         }
     }
 }

@@ -1,7 +1,7 @@
 public enum Terreno{
     Tierra = 0,
     Agua = 1,
-    Calle = 0
+    Calle = 2
 }
 
 public static class Mapas{
@@ -11,10 +11,10 @@ public static class Mapas{
             Terreno I = Terreno.Calle;
             Terreno _ = Terreno.Agua;
             return new Terreno[][]{
-                new Terreno[]{ O, O, O, O, O, O, O, O, O, O },
-                new Terreno[]{ O, O, I, I, I, I, I, I, O, O },
-                new Terreno[]{ O, O, I, _, _, _, _, I, O, O },
-                new Terreno[]{ O, O, I, _, _, _, _, I, O, O },
+                new Terreno[]{ _, _, _, _, _, O, O, O, O, O },
+                new Terreno[]{ _, O, I, I, I, I, I, I, O, O },
+                new Terreno[]{ _, O, I, _, _, _, _, I, O, O },
+                new Terreno[]{ _, O, I, _, _, _, _, I, O, O },
                 new Terreno[]{ O, O, I, _, _, _, _, I, I, O },
                 new Terreno[]{ O, O, I, I, I, _, _, _, I, O },
                 new Terreno[]{ O, O, O, O, I, _, _, _, I, O },
