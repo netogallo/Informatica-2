@@ -1,5 +1,5 @@
 using System;
-class Vehiculo{
+public class Vehiculo{
 
     const double VELOCIDAD_MAXIMA = 1.0;
 
@@ -41,10 +41,6 @@ class Vehiculo{
         double magThis = this.Direccion.Magnitud();
         double magDir = this.MagnitudDireccion(otro);
         return Math.Acos(prod/(magThis*magDir));
-    }
-
-    public void Escapar(Vehiculo ladron){
-
     }
 
     public void Alcanzar(Vehiculo ladron){
