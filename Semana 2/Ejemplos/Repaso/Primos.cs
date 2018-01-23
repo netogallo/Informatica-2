@@ -1,31 +1,31 @@
 public static class Primos{
     // Javier, jjalvarez
-    public int[] Primos(int num)
+    public int[] Ejemplo(int n)
     {
-        int i, n = 2, cont = 0;
-        int[] numeros = new int[num];
-        while (cont < num)
+        int i, num = 2, cont = 0;
+        int[] numeros = new int[n];
+        while (cont < n)
         {
             i = 2;
-            while (i <= n)
+            while (i <= num)
             {
-                if (i == n)
+                if (i == num)
                 {
-                    numeros[cont] = n;
+                    numeros[cont] = num;
                     cont = cont + 1;
                     break;
                 }
                 else
                 {
-                    if (n % i == 0)
+                    if (num % i == 0)
                     {
-                        i = n;
+                        i = num;
                         break;
                     }
                 }
                 i = i + 1;
             }
-            n = n + 1;
+            num = num + 1;
         }
         return numeros;
     }
