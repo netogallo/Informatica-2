@@ -1,0 +1,113 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\inputencoding{utf8}
+
+\mode<presentation> {
+    \usetheme{Madrid}
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Clases Abstractas e Interfaces}
+\author{Ernesto Rodriguez}
+\institute{
+    Universidad del Itsmo \\
+    \medskip \textit{erodriguez@unis.edu.gt}
+}
+
+\date[\today]{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Clases Abstractas: Motivaci\'on}
+    \begin{itemize}
+        \item{Muchas veces tenemos una famila de objetos que comparten caracteristicas en comun.}
+        \item{Sin embargo, no tiene sentido o utilidad crear instancias de un objeto arriba en la jerarquia de clases.}
+        \item{Esto podria resultar en una clase que nunca sera instanciada directamente.}
+        \item{Muchas veces, esa clase va tener metodos vacios, con el proposito que las sub-clases los cambien.}
+    \end{itemize}
+    {\bf Soluci\'on:} \emph{Clases abstractas}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Clases Abstractas}
+    \begin{itemize}
+        \item{Clases cuyo proposito no es crear instancias, sino permitir
+            que otras clases compartan propiedades y metodos.}
+        \item{No es possible crear una instancia de una clase abstracta.}
+        \item{Sin embargo, una clase abstracta puede utilizarse como tipo,
+            ya sea de una propiedad o variable.}
+        \item{La clase abstracta puede definir \emph{metodos abstractos}.}
+        \item{Se declaran mediante la palabra reservada \texttt{abstract}.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Metodos Abstractos}
+    \begin{itemize}
+        \item{Un tipo especial de metodo que solo pede existir en una clase abstracta.}
+        \item{El metodo no tiene cuerpo, sin embargo tiene una \emph{firma}.}
+        \item{La \emph{clase abstracta} puede hacer uso de sus \emph{metodos abstractos}.
+            Incluso, a pesar que el metodo no tiene cuerop.}
+        \item{Toda clase ordinaria que herede de una clase abstracta {\bf debe} definir
+            un cuerpo para todos los \emph{metodos abstractos}}.
+        \item{Una clase abstracta puede heredar de otra clase abstracta {\bf sin}
+            necesidad de implementar sus \emph{metodos abstractos}.}
+        \item{Tambien se definen mediante la palabra reservada \texttt{abstract}.}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Interfaces: Moticaci\'on}
+    \begin{itemize}
+        \item{En C\#, una clase solo puede heredar de otra clase (El problema del diamante).}
+        \item{Sin embargo, existen ocasiones en que dos objetos completamente
+            diferentes comparten algunas operaciones:
+                \begin{itemize}
+                    \item{Biblioteca y Bosque: \'ambos son collecciones.}
+                    \item{Vehiculo y Animal: \'ambos tienen una posici\'on y pueden moverse}
+                \end{itemize}
+            }
+        \item{A menudo, queremos escribir un m\'etodo que pueda utilizar ambos
+            objetos, pero ¿que \emph{firma} tendria el metodo?}
+    \end{itemize}
+{\bf Soluci\'on: } Interfaces
+\end{frame}
+
+\begin{frame}
+    \frametitle{Interfaces}
+    \begin{itemize}
+        \item{Definen un contrato, que debe debe cumplir toda clase
+            que implemente la interfaz}
+        \item{Son una lista de metodos y propiedads, sin definir cuerpo}
+        \item{No se pueden crear instancias de interfaces, sin embargo,
+            pueden utilizarse como tipo de propiedades y variables}
+        \item{Se definen mediante la palabra reservada \texttt{interface}}
+        \item{Una clase declara que implementa una interfaz mediante la
+            palabra reservada \texttt{implements}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Interfaces: Aplicaciones}
+    \begin{itemize}
+        \item{Una herramienta que permite crear abstracciones poderosas.}
+        \item{Permite escribir metodos que pueden utilizarse con una variedad de objetos.}
+        \item{Permite crear bibliotecas, donde el programador simplemnte debe implementar
+            una serie de interfaces para poder utilizar todas las funciones.}
+        \item{Permiten que un objeto imite a otro objeto para propositos de
+            evaluaci\'on o demostraci\'on.}
+    \end{itemize}
+\end{frame}
+\end{document}
