@@ -18,4 +18,10 @@ public class Coleccion: IColeccion{
     public int Size{
         get{return 1;}
     }
+
+    public IColeccion Duplicar(){
+        IColeccion copia = new Coleccion();
+        copia.Set(0, this.Get(0));
+        return copia;
+    }
 }
