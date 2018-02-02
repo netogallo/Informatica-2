@@ -1,0 +1,111 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\inputencoding{utf8}
+
+\mode<presentation> {
+    \usetheme{Madrid}
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Soluciones y Pruebas Unitarias}
+\author{Ernesto Rodriguez}
+\institute{
+    Universidad del Itsmo \\
+    \medskip \textit{erodriguez@unis.edu.gt}
+}
+
+\date[\today]{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Proyect}
+    \begin{itemize}
+        \item{Conjunto de archivos fuente que se compilan en conjunto para producir un archivo objeto.}
+        \item{El archivo objeto es un archivo binario.}
+        \item{El archivo binario puede ser una biblioteca o un ejecutable.}
+        \item{Cada proyecto deberia producir solamente un archivo objeto.}
+        \item{Un proyecto se crea mediante: \texttt{dotnet new [tipo]}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Referencia}
+    \begin{itemize}
+        \item{A menudo un archivo objeto necesita de otro archivo objeto para ejecutarse.}
+        \item{Para ello, un archivo objeto debe hacer referencia a otro archivo objeto.}
+        \item{El framework, .Net permite que un proyecto haga referencia a otro proyecto,
+            lo cual le permite utilizar el archivo objeto de ese proyecto durante
+            su ejecuci\'on.}
+        \item{Para hacer hacer referencia a otro proyecto se utiliza el comando:
+            \texttt{dotnet add reference [camino/a/referencia.csproj]}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Soluci\'on}
+    {\bf Soluci\'on:} Conjunto de proyectos que dependen entre ellos
+    con el proposito de crear un programa complejo.
+    \begin{itemize}
+        \item{Es importante dividir un programa en varios proyectos,
+        esto permite que el programa sea modular.}
+        \item{{\bf Principio de unica responsabilidad:} Cada proyecto dentro de la soluci\'on debe cumplir
+        solamente una funci\'on.}
+        \item{El dies\~no modular permite utilizar componentes de de un
+        programa para construir otros programas.}
+        \item{Una soluci\'on se crea mediante el comando: \texttt{dotnet new sln}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Testing}
+    \begin{itemize}
+        \item{El compilador realiza una verificaci\'on basica
+        de la exactitud de un programa.}
+        \item{Sin embargo, esa validaci\'on muchas veces es
+        demasiado superficial.}
+        \item{Es posible realizar verificaciones adicionales mediante
+        otros programas.}
+        \item{A esto se le conoce como \emph{testing}}
+        \item{Existen varios tipos de testing: unitarios, integraci\'on,
+        aceptaci\'on.}
+        \item{En este curso solamente estudiaremos los tests unitarios.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Pruebas unitarias}
+    \begin{itemize}
+        \item{Verifican que un proyecto individualmente cumple con las
+        funciones que debe llevar a cabo.}
+        \item{Deben ser simples y tener un proposito definido.}
+        \item{Por lo general se dividen en tres partes:
+            \begin{enumerate}
+                \item{Preparaci\'on}
+                \item{Acto}
+                \item{Validaci\'on}
+            \end{enumerate}
+        }
+        \item{Por lo general, cada prueba unitaria se enfoca solamente
+        en una o pocas clases.}
+        \item{.Net core permite crear un proyecto exclusivo de pruebas
+        unitarias mediante el comando: \texttt{dotnet new xunit}}
+    \end{itemize}
+    {\bf Importante:} Es buena practica colocar las purebas unitarias en
+    un proyecto separado al proyecto que esta siendo verificado debido
+    a que el codigo de una prueba unitaria no afecta el funcionamiento
+    del proyecto principal.
+\end{frame}
+
+\end{document}
