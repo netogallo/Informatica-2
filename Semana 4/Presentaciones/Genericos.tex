@@ -1,0 +1,73 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\inputencoding{utf8}
+
+\mode<presentation> {
+    \usetheme{Madrid}
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Genericos}
+\author{Ernesto Rodriguez}
+\institute{
+    Universidad del Itsmo \\
+    \medskip \textit{erodriguez@unis.edu.gt}
+}
+
+\date[\today]{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introducci\'on}
+    \begin{itemize}
+        \item{Los tipos genericos probablemente abarcan un 50\% de los
+        estudios que he hecho en el campo de computaci\'on.}
+        \item{Muchos lenguajes de programaci\'on se crean con el
+        proposito de mejorar su manejo de tipos genericos.
+        Ejemplo: Scala, Haskell, OCaml, Agda, ect.}
+        \item{Existen cientos de articulos y publicaciones alrededor
+        del concepto de tipos genericos.}
+        \item{Para los que ya conozcan el tema, sientanse libres de
+        aprender Haskell (\url{http://learnyouahaskell.com/}) para profundizar
+        sus conocimientos sobre Genericos.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivaci\'on}
+    \begin{itemize}
+        \item{Existen ocasiones donde una clase se puede generalizar
+        para varios tipos.}
+        \item{Sin embargo, al definir las propiedades y metodos de
+        una clase, uno debe fijar un tipo especifico.}
+        \item{Esto puede llevar a repetici\'on de codigo, en
+        especial cuando hay muchos niveles de herencia.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivaci\'on}
+    \begin{itemize}
+        \item{En algunos casos, las interfaces pueden ser una
+        abstraccion suficiente para poder utilizar varios tipos.}
+        \item{En el peor de los casos, una variable se puede
+        declarar como tipo \texttt{Object} y permitir que se
+        asigne cualquier valor.}
+        \item{Sin embargo esto puede llevar a problemas.}
+        \item{Ejemplo tradicional de genericos: Una colecci\'on}
+    \end{itemize}
+\end{frame}
+
+\end{document}
