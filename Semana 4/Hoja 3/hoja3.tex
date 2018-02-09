@@ -1,0 +1,220 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../../Recursos/logo.png}} & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Informatica 2 \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Hoja de trabajo \#3} \\
+        \large{Fecha de entrega: 15 de Febrero, 2018 - 11:59pm} \\
+        \horrule{1pt}
+\end{center}
+\emph{Instrucciones: Realizar cada uno de los ejercicios siguiendo sus respectivas
+instrucciones. El trabajo debe ser entregado a traves de Github, en su repositorio del curso, colocado en una carpeta llamada ``Hoja de trabajo 3''.
+Al menos que la pregunta indique diferente, todas las respuestas a preguntas escritas deben presentarse en
+un documento formato pdf, el cual haya sido generado mediante Latex. Los ejercicios de programaci\'on deben ser colocados en una carpeta
+llamada ``Programas", la cual debe colocarse dentro de la carpeta correspondiente a esta hoja de trabajo.}
+
+% \perlscript{homework_example}{Sample Perl Script With Highlighting}
+
+\section*{Parametros de retorno}
+
+En C\# hay varias opciones para indicar que un metodo no se pudo ejecutar correctametne
+debido a que los parametros que se le dieron eran invalidos. Una forma de hacer esto
+es utilizar \emph{parametros de retorno}.
+\\\\
+Los parametros de retorno se definen colocando la palabra reservada \texttt{out} antes
+del tipo de un parametro en la firma del metodo. Ellos permiten que el codigo que invoca
+al metodo pueda pasarle variables al metodo las cuales pueden utilizarse para almacenar
+el valor retornado. Considere el siguiente codigo:
+\perlscript{Parametros}{}
+Este programa tiene un metodo \texttt{Dividir}, el cual verifica que el divisor sea
+diferente de cero antes de hacer la division. Cuando el divisor es diferente de cero,
+el resultado se almacena en la variable \texttt{resultado} y luego se retorna \texttt{true}
+para indicar que la division fue exitosa. De lo contrario, el metodo solamente retorna \texttt{false}.
+\\\\
+Cuando este metodo es llamado, debe recibir una variable como tercer parametro. Al hacer eso,
+el metodo \texttt{Dividir} obtiene acesso a la variable \emph{respuesta} donde escribe su
+resultado en caso que la division sea exitosa. Luego el metodo \texttt{main} puede verificar
+si la division fue exitosa mediante un \texttt{if}, e imprimir la respuesta en caso exitoso
+o mostrar el error en caso contrario.
+\\\\
+En el caso de este ejemplo, el programa imprimiria en la consola ``Error, el divisor no
+puede ser '0'!'' debido a que el divisor que se utiliza es '0'; 
+
+\section*{Iniciacion}
+\begin{enumerate}
+        \item{Adentro de la carpeta programas, crear una soluci\'on con el mismo
+        nombre, mediante \texttt{dotnet new sln}}
+        \item{Crear dos carpetas dentro de la carpeta ``Progrmas'' llamadas ``List''
+        y ``ListTests''}
+        \item{Crear un proyecto de tipo \emph{consola} en la carpeta ``List'' mediante
+        \texttt{dotnet new console}}
+        \item{Crear un proyecto de tipo \emph{xunit} dentro de la carpeta ``ListTests''
+        mediatne el comando \texttt{dotnet new xunit}}
+\end{enumerate}
+
+\section*{Ejercicio \#1 (25\%)}
+
+En el proyecto ``List'', defina una interfaz llamada \texttt{IList} y coloquela en
+un archivo llamado ``IList.cs''. Esta interfaz representa una lista generica de objetos
+arbitrarios, por lo cual debe tener un parametro generico llamado \texttt{T}. La interfaz
+debe definir los siguientes metodos:
+\\\\
+\begin{tabular}{|l|l|l|p{7cm}|}
+        \hline
+        {\bf Nombre} & {\bf Tipo de parametros} & {\bf Tipo de retorno} & {\bf Descripci\'on} \\
+        \hline
+        \texttt{Get} & $\mathtt{int}\otimes\mathtt{out}\ \mathtt{int}$ & \texttt{bool} & Obtener objeto por indice. \\
+        \hline
+        \texttt{Set} & $\mathtt{int}\otimes\mathtt{T}$ & \texttt{bool} & Colocar valor en el indice. \\
+        \hline
+        \texttt{Push} & \texttt{T} & \texttt{void} & Colocar elemento al final de la lista incrementando su longitud por 1 \\
+        \hline
+        \texttt{Length} & & \texttt{int} & Obtener la longitud de la lista \\
+        \hline
+\end{tabular}
+\\\\
+\emph{Nota: la notaci\'on $\mathtt{int}\otimes\mathtt{string}$ es una notaci\'on comun en el campo
+de la computaci\'on para denotar firmas de metodos. En este caso, la notacion indica que el metodo
+acepta un \texttt{int} como primer parametro y un \texttt{string} com segundo parametro.}
+\\\\
+Recordar que las interfaces solo definen la \emph{firma} de los metodos, no los
+cuerpos.
+\section*{Ejercicio \#2 (25\%)}
+En el proyecto ``List'', definir una clase abstracta llamada \texttt{Lista}. Esta clase abstracta debe
+implementar la interfaz \texttt{IList} declarando los metodos definidos en dicha
+interfaz como \emph{metodos abstractos}. Para ello, esta clase tambi\'en debe
+aceptar un parametro generico \texttt{T}. Adicionalmete, la clase abstracta debe
+definir un metodo concreto \texttt{Push} : $\mathtt{IList\langle T\rangle}
+\Rightarrow\mathtt{void}$ (recibe como parametro un \texttt{IList} del mismo tipo
+que la lista y retorna void), el cual tiene el mismo nombre al metodo \texttt{Push}
+definido anteriormete, que es un \emph{overload} del metodo \texttt{Push} el cual
+empuja todos los elementos de la lista que se paso como parametro a la lista
+actual.
+\section*{Ejercicio \#3 (25\%)}
+En el proyecto ``List'', definir una clase llamada \texttt{ArrayList} la cual hereda de la clase abstracta
+\emph{IList}. El constructor de esta clase recibe un arreglo de \texttt{T} (el 
+parametro generico) y utiliza ese arreglo como su almacenamiento inicial. Esto
+significa que la clase debe tener una propiedad privada llamada \texttt{almacenamiento}
+de tipo \texttt{T[]} la cual se inicializa con el arreglo obtenido como parametro.
+Cada vez que se haga una llamada al metodo \texttt{Push}, la clase debe:
+\begin{enumerate}
+        \item{Crear un arreglo nuevo de longitud $\mathtt{almacenamiento.Length}+1$}
+        \item{Copiar todos los elementos existentes en el mismo orden a este nuevo arreglo.}
+        \item{Colocar el elemento que se paso como parametro e la ultima celda del arreglo.}
+        \item{Asignar este arreglo a la propiedad \texttt{almacenamiento} de la clase.}
+\end{enumerate}
+Los m\'etodos \texttt{Get}, \texttt{Set} y \texttt{Length} de esta clase deben utilizar
+el arreglo \texttt{almacenamiento} para llevar a cabo su trabajo. 
+\section*{Ejercicio \#4 (25\%)}
+En el proyecto ``ListTests'', escribir tests unitarios que validen lo siguiente:
+\begin{enumerate}
+        \item{Al llamar el metodo \texttt{Push} de un \texttt{ArrayList}, su longitud
+        aumenta en 1 y su ultimo elemento (indice longitud menos 1) es el elemento que
+        fue empujado.}
+        \item{Al llamar el metodo \texttt{Get}, con un indice mayor a la longitud de la
+        lista, el metodo retorna \texttt{false}.}
+        \item{Crear un test unitario propio.}
+Recordar que los tests unitarios deben ir en un proyecto diferente al proyecto
+donde se definieron las clases anteriores.
+\end{enumerate}
+
+\end{document}

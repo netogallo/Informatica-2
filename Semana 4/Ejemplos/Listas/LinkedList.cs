@@ -28,7 +28,7 @@ public class LinkedList<T>: IList<T>
     {
         if(indice < 0)
         {
-            return default(T);
+            return null;
         }
 
         int actualIndice = 0;
@@ -39,7 +39,7 @@ public class LinkedList<T>: IList<T>
 
             if(actual == null)
             {
-                return default(T);
+                return null;
             }
 
             actual = actual.Resto;
