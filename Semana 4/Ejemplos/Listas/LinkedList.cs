@@ -3,6 +3,20 @@ public class LinkedList<T>: IList<T>
     public T Elemento{get; private set;}
     public LinkedList<T> Resto{get; private set;}
 
+    public int Length{
+        get{
+            LinkedList<T> lista = this;
+            int len = 0;
+
+            while(lista.Resto != null){
+                lista = lista.Resto;
+                len++;
+            }
+
+            return len;
+        }
+    }
+
     public LinkedList(T elemento)
     {
         this.Elemento = elemento;
@@ -28,7 +42,7 @@ public class LinkedList<T>: IList<T>
     {
         if(indice < 0)
         {
-            return null;
+            return default(T);
         }
 
         int actualIndice = 0;
@@ -39,7 +53,7 @@ public class LinkedList<T>: IList<T>
 
             if(actual == null)
             {
-                return null;
+                return default(T);
             }
 
             actual = actual.Resto;
