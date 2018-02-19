@@ -162,7 +162,7 @@ debe definir los siguientes metodos:
         \hline
         {\bf Nombre} & {\bf Tipo de parametros} & {\bf Tipo de retorno} & {\bf Descripci\'on} \\
         \hline
-        \texttt{Get} & $\mathtt{int}\otimes\mathtt{out}\ \mathtt{int}$ & \texttt{bool} & Obtener objeto por indice. \\
+        \texttt{Get} & $\mathtt{int}\otimes\mathtt{out}\ \mathtt{T}$ & \texttt{bool} & Obtener objeto por indice. \\
         \hline
         \texttt{Set} & $\mathtt{int}\otimes\mathtt{T}$ & \texttt{bool} & Colocar valor en el indice. \\
         \hline
@@ -191,7 +191,7 @@ empuja todos los elementos de la lista que se paso como parametro a la lista
 actual.
 \section*{Ejercicio \#3 (25\%)}
 En el proyecto ``List'', definir una clase llamada \texttt{ArrayList} la cual hereda de la clase abstracta
-\emph{IList}. El constructor de esta clase recibe un arreglo de \texttt{T} (el 
+\emph{List}. El constructor de esta clase recibe un arreglo de \texttt{T} (el 
 parametro generico) y utiliza ese arreglo como su almacenamiento inicial. Esto
 significa que la clase debe tener una propiedad privada llamada \texttt{almacenamiento}
 de tipo \texttt{T[]} la cual se inicializa con el arreglo obtenido como parametro.
