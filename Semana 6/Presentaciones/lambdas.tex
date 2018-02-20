@@ -122,6 +122,36 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{Delegates: Motivaci\'on}
+    \begin{itemize}
+        \item{Los tipos \texttt{Func} y \texttt{Action} no permiten exponer
+        metadata de forma facil.}
+        \item{Si se cambia la firma de una funcion, esta debe ser cambiada
+        en todos los sitios donde se utiliza.}
+        \item{A menudo no es intuitivo saber que funci\'on lleva a cabo
+        cada parametro de una funci\'on o acci\'on anonima.}
+        \item{Es dificil documentar el proposito de cada funci\'on anonima o acci\'on}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Delegates: Utilizaci\'on}
+    \begin{itemize}
+        \item{Un \emph{delegate} es una firma de un metodo, que puede
+        utilizarse como tipo.}
+        \item{Permiten asignarle nombre a cada uno de los parametros
+        de dicha firma, mejorando la documentaci\'on.}
+        \item{Los \emph{delegates} pueden tener un nombre, lo cual
+        facilita entender el proposito de dicho \emph{delegate}.}
+        \item{Alg\'unas caracteristicas de C\# (como \emph{eventos})
+        son m\'as amigables de utilizar con delegates.}
+        \item{De hecho, \texttt{Func} y \texttt{Action} son \emph{delegates}.}
+        \item{Ejemplos de la utilizaci\'on de \emph{delegates} se pueden encontrar
+        en el archivo \href{run:../Ejemplos/Lambdas/Program.cs}{Program.cs}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
     \frametitle{Referencias}
     \bibliography{../../Referencias/referencias}
     \bibliographystyle{plain}

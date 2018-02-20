@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace Lambdas
 {
+    public delegate void ForEachArgs(int what);
+
     class Program
     {
 
@@ -32,7 +34,6 @@ namespace Lambdas
         }
 
         static void Ejemplo_Func(){
-
             Func<int,int,int> sumar = (x,y) => x + y;
             int resultado = sumar(1,2);
 
