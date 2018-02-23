@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../Recursos/logo.png}} & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Proyecto Final \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Proyecto Final} \\
+        \large{Fecha de entrega intermedia: 20 de Abril, 2018 - 11:59pm} \\
+        \large{Fecha de entrega final: 14 de Mayo, 2018 - 11:59pm} \\
+        \horrule{1pt}
+\end{center}
+
+El proyecto final tiene como intenci\'on poner en practica lo
+que se aprendio en clase. Adicionalmente, tiene el objetivo
+motivar al estudiante a trabajar en grupo por lo cual debe
+realizarse en grupos de 2 o 3 personas.
+\\\\
+Este proyecto se enregara en dos etapas: la entrega intermediaria
+y la entrega final. Su valor total es un 30\% de la nota del curso
+ya que la entrega intermediaria sera en vez del 3er examen parcial
+y la entrega final tendra el valor de medio examen final.
+\\\\
+El proyecto debe ser entregado mediante Github. Se debe crear un
+{\bf repositorio exclusivo} para este proyecto (uno por proyecto).
+La ubicaci\'on del repositorio debe ser enviada a 
+\href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt}.
+\\\\
+Para este proyecto, los estudiantes deben presentar su propia
+version del juego ``Connect 4''. Un ejemplo de dicho juego se
+encuentra en \url{http://www.connectfour.org/connect-4-online.php}.
+\\\\
+En resumen, es un juego de 2 jugadores en el cual los jugadores
+toman turnos colocando una moneda en alguna de las columnas.
+Esta moneda (por gravedad) se deslizara hasta ocupar el espacio
+m\'as bajo posible. El juego concluye cuando alguno de los dos
+jugadores ha logrado hacer una fila de 4 monedas.
+\\\\
+Este documento probablemente no es una descripci\'on completa
+del proyecto y se espera que el estudiante (como en la vida real)
+le pregunte al profesor que aclare los detalles que no estan
+claros.
+\section*{Proyectos alternos}
+Si un grupo desea hacer otro proyecto, por favor hablar con el
+catedratico para llegar a un acuerdo sobre la entrega intermedia y
+final.
+
+\section*{Entrega final (57\%)}
+\begin{itemize}
+        \item{Interfaz utilizando caracteres impresos en la terminal
+        (no es requisito una interfaz grafica)}
+        \item{Controles del juego mediante el teclado, los alumnos
+        tienen la libertad de dise\~nar como van a interactuar
+        los jugadores con el juego (no es necesario que funcione con
+        el mouse.)}
+        \item{Modalidad de juego para dos jugadores {\bf humanos}. No
+        es necesario que el juego tenga una inteligencia artifical,
+        sino que ambos jugadores tomaran turnos en la misma computadora.}
+        \item{El juego debe detectar automaticamente cuando un jugador
+        ha ganado y mostrar un mensaje de victora.}
+        \item{El juego debe presentar instrucciones claras acerca
+        de la forma que los usuarios deben interactuar con el juego.}
+        \item{Se evaluara la calidad del codigo, esto significa:
+        \begin{itemize}
+                \item{Utilizaci\'on correcta de la abstracci\'on.}
+                \item{Utilizaci\'on correcta de herencia e interfaces.}
+                \item{Principio de unica responsabilidad aplicado a las clases.}
+                \item{Utilizaci\'on de \emph{git} para llevar control del codigo.}
+                \item{Utilizaci\'on de colecciones y algoritmos para su manipulaci\'on.}
+                \item{Pruebas unitarias.}
+        \end{itemize}
+        }
+\end{itemize}
+
+\section*{Entrega intermediaria (33\%)}
+Este proyecto tendra una entrega intermediaria. La intenci\'on es
+motivar al estudiante que empieze a trabajar en el proyecto lo antes
+posible y que desarrolle el software de forma \emph{ordenada}. Para
+esta entrega deben haber lo siguiente:
+\begin{itemize}
+        \item{5 interfaces, las cuales definiran el comportamiento
+        de los diversos componentes del juego. No es necesario que
+        tengan una implementaci\'on en este punto.}
+        \item{2 pruebas unitarias para cada interfaz. Cada una de
+        estas pruebas debe verificar que funcionen correctamente
+        los componentes de este proyecto}
+\end{itemize}
+Las interfaces deben estar correctamente documentadas, indicando
+en la documentaci\'on (mediante comentarios) cual es el proposito
+de la interfaz y cual es el proposito de cada uno de los metodos
+de la interfaz. Adicionalmente, las pruebas unitarias tambien deben
+documentar cual es el objetivo de dicha prueba. Debido a que las
+interfaces no deben estar implementadas en este punto, las pruebas
+unitarias van a fallar. Sin embargo, el proyecto y las pruebas deben
+compilar.
+
+\section*{Extras (Hasta un 30\% adicional)}
+Puede notarse que 57\% + 33\% suman 90\%. Para sacar nota comleta,
+el juego debe implementar algunos extras. Los extras tambien le
+permiten obtener puntos adicionales que seran abonados en otras
+notas que haya sacado en el curso. Ejemplos de algunos extras son:
+\begin{itemize}
+        \item{Utilizar un lenguaje de programaci\'on distinto a C\#
+        (Haskell, Java, Python, Javascript, Lisp, todo menos Objective-C y Swift)}
+        \item{Interfaz grafica (GUI), puede hacerse con WPF, GTK, QT, OpenGL o Web
+        (No se permite Cocoa debido a que no tengo una Mac)}
+        \item{Version movil (solamente Android debido a que no tengo IPhone)}
+        \item{Modo de juego contra una inteligencia artificial}
+        \item{Modo de juego remoto (permitir que ambos jugadores
+        utilizen una computadora diferente)}
+        \item{Opcion para cambiar el tama\~no del tablero.}
+        \item{Tutorial sobre como jugar}
+\end{itemize}
+{\bf Nota:} El estudiante puede proponer sus propios extras.
+
+\end{document}

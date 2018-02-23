@@ -19,8 +19,46 @@ namespace Lambdas
             return default(T);
         }
 
-        static int MaxBy(int[] valores, Func<int,int,bool> cmp){
+        static int[] ZipWith(int[] nums1, int[] nums2, Func<int,int,int> zipper){
+            // ... //
+            return null;
+        }
 
+        static int Reduce(int[] nums, int inicial, Func<int,int,int> reducer){
+            // ... //
+            return default(int);
+        }
+
+        /**
+        Busca el valor mas grande en el arreglo "valores" utilizando
+        la funcion "cmp" como criterio para comparar valores.
+        La funcion "cmp" retorna true si el primer valor es mas
+        grande que el segundo o false en caso contrario.
+        */
+        static int MaxBy(int[] valores, Func<int,int,bool> cmp){
+            int comparacion = valores[0];
+
+            for(int i = 0; i < valores.Length; i++){
+                int num = valores[i];
+                if(cmp(num, comparacion)){
+                    comparacion = num;
+                }
+            }
+
+            return comparacion;
+        }
+
+        static T GMaxBy<T>(T[] valores, Func<T,T,bool> cmp){
+            T comparacion = valores[0];
+
+            for(int i = 0; i < valores.Length; i++){
+                T num = valores[i];
+                if(cmp(num, comparacion)){
+                    comparacion = num;
+                }
+            }
+
+            return comparacion;
         }
 
         static void Ejemplo_Buscar(){

@@ -1,0 +1,172 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../../Recursos/logo.png}} & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Informatica 2 \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Hoja de trabajo \#5} \\
+        \large{Fecha de entrega: 1 de Marzo, 2018 - 11:59pm} \\
+        \horrule{1pt}
+\end{center}
+\emph{Instrucciones: Realizar cada uno de los ejercicios siguiendo sus respectivas
+instrucciones. El trabajo debe ser entregado a traves de Github, en su repositorio del curso, colocado en una carpeta llamada ``Hoja de trabajo 5''.
+Al menos que la pregunta indique diferente, todas las respuestas a preguntas escritas deben presentarse en
+un documento formato pdf, el cual haya sido generado mediante Latex. Los ejercicios de programaci\'on deben ser colocados en una carpeta
+llamada ``Programas", la cual debe colocarse dentro de la carpeta correspondiente a esta hoja de trabajo.}
+
+% \perlscript{homework_example}{Sample Perl Script With Highlighting}
+
+\section*{Reduce}
+La funci\'on de orden superior m\'as utilizada probablemente es la funci\'on \emph{Reduce}
+(tambien conocida como \emph{fold}). En esta tarea se implementara
+dicha funci\'on y se llevara a cabo paso a paso.
+\\\\
+Para empezar crear una soluci\'on dentro de la carpeta ``Programas''
+y dentro de ella crear dos proyectos: ``Reduce'' y ``ReduceTests''.
+El proyecto ``Reduce'' debe ser de tipo \emph{console} y ``ReduceTests''
+de tipo \emph{xunit}.
+
+\section*{Parte 1 (50\%)}
+En la clase ``Program'' del archivo ``Program.cs'', definir un
+metodo estatico llamado ``ReduceInt''. Este metodo tiene tipo
+``$\mathtt{ReduceInt}\ :\ \mathtt{int[]}\otimes\mathtt{int}\otimes
+(\mathtt{int}\otimes\mathtt{int}\rightarrow\mathtt{int})\rightarrow\mathtt{int}$'',
+en otras palabras:
+\begin{itemize}
+        \item{Acepta un arreglo de \texttt{int} como primer parametro}
+        \item{Acepta un \texttt{int} como segundo parametro}
+        \item{Acepta una funci\'on que toma dos \texttt{int} y produce un \texttt{int}
+        como tercer parametro.}
+        \item{Retorna un \texttt{int}}
+\end{itemize}
+La funci\'on opera de la siguiente manera:
+\begin{enumerate}
+        \item{Inicializa una variable de tipo \texttt{int} con el
+        valor del segundo parametro. Esta variable se llama \emph{acumulador}}
+        \item{Luego un ciclo recorre todos los elementos.}
+        \item{En cada iteraci\'on del ciclo, el \emph{acumulador} y el
+        elemento actual se utilizan para llamar la funci\'on en el tercer
+        parametro (conocida como la \emph{reducci\'on}), y el resultado de
+        dicha funci\'on se vuelbe el nuevo valor del \emph{acumulador}}
+        \item{Luego de recorrer todos los elementos, el resultado de
+        reduce es el ultimo valor del \emph{acumulador}}
+\end{enumerate}
+Ejemplos:
+\perlscript{./ReduceInt}{}
+Como primer ejercicio, implementar la funcion ``ReduceInt'' e
+implementar 1 prueba unitaria (en el proyecto ``ReduceTests'')
+que verifique el comportameinto correcto de ``ReduceInt''.
+\pagebreak
+\section*{Parte 2 (50\%)}
+La forma m\'as general de la funci\'on \emph{Reduce}, es una version
+con dos parametros genericos, los llamaremos \texttt{T} y \texttt{A}.
+El primer parametro corresponde al tipo del arreglo que recibe la
+funci\'on \emph{Reduce}, el segundo corresponde al tipo del \emph{accumulador}.
+Esto conlleva a que la funci\'on tenga el tipo ``$\mathtt{Reduce}\langle\mathtt{T},
+\mathtt{A}\rangle\ :\ \mathtt{T}[]\otimes\mathtt{A}\otimes(\mathtt{A}\otimes\mathtt{T}
+\rightarrow\mathtt{A})\rightarrow\mathtt{A}$''. Esta version puede
+trabajar con arreglos y acumuladores de tipo diferentes, dando la
+oportunidad de implementar una variedad de funciones. Por ejemplo:
+\perlscript{./Reduce}{}
+Como segundo ejercicio debe implementar la funci\'on ``Reduce'' e
+implementar una prueba unitaria (en el proyecto ``ReduceTests'')
+que verifique el comportamiento de ``Reduce''.
+\end{document}
