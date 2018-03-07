@@ -1,0 +1,228 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../../Recursos/logo.png}} & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Informatica 2 \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Repaso Parcial \#2} \\
+        \horrule{1pt}
+\end{center}
+
+Los \emph{algoritmos geneticos} son algoritmos de busqueda que permiten encontrar soluciones
+a problemas que son dificiles de resolver desde un punto de vista practico. Estos algoritmos
+se inspiran en el mecanismo que utilizan los seres vivos para adaptarse a ambientes diferentes.
+
+\section*{Interfaz IProblem}
+Los problemas de busqueda utilizando programaci\'on genetica seran representados por
+la interfaz generica $\mathtt{IProblem\langle T\rangle}$. {\bf Como primer ejercicio, 
+debe implementar la interfaz \texttt{IProblem} la cual tendra los siguientes metodos:}
+\\\\
+El primer metodo es el \emph{operador de intercambio}. Dicho
+operador lo representaremos con metodo llamado \texttt{Crossover} de tipo ``$\mathtt{Crossover}\ 
+:\ \mathtt{T}[\ ]\otimes\mathtt{T}[\ ]\rightarrow\mathtt{T}[\ ]$''. Este operador recive
+dos arreglos, los cuales son aproximaciones a una soluci\'on representadas como arreglos,
+y las intenta combinar para obtener una mejor soluci\'on.
+\\\\
+El segundo elemento de un algoritmo genetico es el \emph{operador de mutaci\'on}. Este
+operador lo representaremos con un metodo llamado \texttt{Mutate} de tipo ``$\mathtt{Mutate}\ :\ 
+\mathtt{T}[\ ]\rightarrow\mathtt{T}[\ ]$''. El cual se le proporciona una aproximaci\'on
+de soluci\'on, y la modifica de forma aleatorea para obtener una nueva possible soluci\'on.
+\\\\
+El tercer elemento de un algoritmo genetico es el \emph{criterio de rendimiento}. Este
+criterio evalua que tan buena o mala es una soluci\'on en particular. Este criterio se
+representara con un metodo llamado $\mathtt{Score}$ de tipo $\mathtt{Score}\ :\ \mathtt{T}[\ ]
+\rightarrow \mathtt{double}$. 
+\\\\
+El ultimo elemento del algoritmo es un metodo que permite generar soluciones aleatoreas.
+Este metodo llamado $\mathtt{Guess}$ tiene tipo $\mathtt{Guess}\ :\ \mathtt{void}\rightarrow
+\mathtt{T}[\ ]$. Este metodo no recive ningun parametro y retorna una soluci\'on generada
+al azar del problema en mano.
+\subsection*{Problema del vendedor ambulante}
+El problema del vendedor ambulante es uno de los problemas m\'as ``molestamente complejo''
+que hay en la computaci\'on. Consiste en encontrar el camino m\'as corto que recorra un
+grupo de ciudades y que luego regresa a la ciudad de partida. Este problema es un canditato
+perfecto para aproximar con algoritmos geneticos. Supongamos que se desea recurrer una cantidad
+de $n$ ciudades. Cada ciudad se representara con un numero $0\leq i < n$. Con esto, podemos
+representar un reccorido $r$ como un arreglo de enteros $[i_0 \ldots i_n]$ en donde cada indice
+del arreglo, representa la ciudad a la que se viajara luego de haber visitado el indicie anterior.
+Supongamos que tenemos las ciudades:
+\begin{enumerate}
+        \item Guatemala
+        \item Managua
+        \item San Salvador
+\end{enumerate}
+Entonces, el arreglo $[2,1,3]$ representa un recorrido que empieza en Managua, luego
+pasa por Guatemala, de ahi pasa por San Salvador para luego regresar a Managua. Las distancias
+entre ciudades, se pueden representar con un arreglo de dos dimensiones llamado $d$ donde
+una pareja de indices representa la distancia entre dos puntos. Por ejemplo en el ejemplo
+anterior, las distancias se representarian con el arreglo de dos dimensions (matriz):
+\\\\
+\begin{tabular}{|c|c|c|}
+        \hline
+        0 & 1020 & 454\\
+        \hline
+        1020 & 0 & 511 \\
+        \hline
+        454 & 511 & 0 \\
+        \hline
+\end{tabular}
+\\\\
+La cual muestra la distancia entre las ciudades en kilometros por tierra. Para evaluar
+que tan buena es una soluci\'on, simplemente se suman las distancias del recorrido. Para
+el recorrido $[2,1,3]$, su puntaje seria $1020+454+511$ o $1985$.
+\\\\
+Con esta informaci\'on, se puede implementar la clase abstracta \texttt{TSP} (Traveling salesman problem), con los siguientes
+criterios:
+\begin{itemize}
+        \item{La clase \texttt{TSP} debe implementar la interfaz $\mathtt{IProblem \langle int\rangle}$.}
+        \item{El constructor de \texttt{TSP} debe recibir un arreglo de dos dimensiones (matriz) de \texttt{double}, el cuar representara
+        las distancias entre un conjunto de ciudades, como se explico anteriormente.}
+        \item{Los metodos \texttt{Crossover} y \texttt{Mutate} deben ser abstractos}
+        \item{El metodo \texttt{Score} utiliza la matriz pasada en el construcotr para caluclar
+        la distancia de un recorrido en particular y la retorna.}
+        \item{El metodo \texttt{Guess} retorna un recorrido (array de enteros) al azar. Tomar
+        en cuenta que cada numero {\bf solo debe aparecer una vez} en el arreglo.}
+\end{itemize}
+{\bf Implementar la clase abstracta TSP}
+
+\section*{Instancia concreta de TSP}
+Los metodos \texttt{Crossover} y \texttt{Mutate} para \texttt{TSP} tienen varias posibles
+implementaci\'ones. El rendimiento del algoritmo genetico depende de dichas implementaciones.
+En esta secci\'on consideraremos las siguientes:
+\\\\
+Para el metodo \texttt{Mutate}, dado un arreglo, este metodo seleccionara dos indices
+aleatoreamente e intercambiara los valores. Por ejemplo, para el arreglo $[2,1,3$, si
+se seleccionan los indices 0 y 3, el resultado seria $[3,1,2]$;
+\\\\
+El metodo \texttt{Crossover}, construye un nuevo arreglo, primero combinando los dos arreglos
+en un arreglo con el doble de longitud que los arreglos originales y luego seleccionando
+los numeros del nuevo arreglo en orden hasta tener todos los numeros. En un arreglo de longitud
+original. Por ejemplo, dados los arreglos $[3,1,2]$ y $[2,1,3]$, primero creamos el arreglo
+$[3,2,1,1,2,3]$ y luego seleccionamos la primera ocurrencia de cada numero en orden para
+obtener el arreglo $[3,2,1]$.
+\\\\
+{\bf Crear una clase llamada TSPEjemplo, la cual hereda de la clase TSP e implementa los
+metodos Mutate y Crossover como esta descrito en esta seccion.}
+\section*{La clase Solver}
+Crear una clase llamada \texttt{Solver}, la cual tiene un metodo estatico generico llamado
+\texttt{Solve} de tipo $\mathtt{Solve\langle T\rangle}\ :\ \mathtt{IProblem\langle T\rangle}\otimes
+\mathtt{double}\rightarrow \mathtt{T}[\ ]$. Este metodo busca una soluci\'on al problema que
+se le dio, la cual debe tener un punteo (o score) menor al segundo parametro. Para ello sigue
+los siguientes pasos:
+\begin{enumerate}
+        \item{Utilizar el metodo \texttt{Guess} para generar 5 soluciones aleatoreas}
+        \item{Generar otras 5 soluciones aplicando el metodo \texttt{Mutate} a cada soluci\'on}
+        \item{De las 10 soluciones, seleccionar 5 parejas aleatoreamente, utilizar estas 5 parejas
+        para generar otras 5 soluciones m\'as utilizando el metodo \texttt{Crossover}}
+        \item{De las 15 soluciones, seleccionar las 5 con puntaje o score m\'as bajo, descartar
+        el resto.}
+        \item{Si alguna de estas 5 soluciones tiene un puntaje menor al segundo parametro de
+        este metodo, retornar dicha soluci\'on, de lo contrario, ir al paso 2 y repetir.}
+\end{enumerate}
+{\bf Implementar el algoritmo Solve.}
+\section*{Optimizaciones}
+Siempre se pueden considerar mejoras, por ejemplo:
+\begin{itemize}
+        \item{Cambiar el metodo corssover o mutate}
+        \item{Utilizar un pool mas grande de soluciones candidatos}
+\end{itemize}
+Tienen la libertad de probar :)
+\end{document}
