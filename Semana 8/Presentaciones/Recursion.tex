@@ -1,0 +1,91 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+\inputencoding{utf8}
+
+\mode<presentation> {
+    \usetheme{Madrid}
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title[Git]{Recursi\'on}
+\author{Ernesto Rodriguez}
+\institute{
+    Universidad del Itsmo \\
+    \medskip \textit{erodriguez@unis.edu.gt}
+}
+
+\date[\today]{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivaci\'on}
+    \begin{itemize}
+        \item{A menudo, una funci\'on se puede definir en terminos de ella misma}
+        \item{Cada iteraci\'on de la funci\'on ejecuta una versi\'on simplificada de la misma}
+        \item{Dichas implementaciones permiten mayor facilidad para razonar sobre algoritmos}
+        \item{El calculo-$\lambda$ original, solamente permitia hacer ciclos mediante
+        recursi\'on.}
+        \item{Es la versi\'on programatica de la inducci\'on matematica}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recursi\'on: Idea}
+    \begin{itemize}
+        \item{Una funci\'on se define en dos partes:}
+        \item{{\bf Caso base:}
+            \begin{itemize}
+                \item{Es el caso que se considera cuando la funci\'on
+                es llamada con los parametros m\'as sencillos. Tambi\'en llamado caso trivial}
+                \item{Pueden haber varias condiciones o valores de entrada a la funci\'on para
+                las cuales es aplicable el caso base. Ej. suma de numeros unitarios.}
+            \end{itemize}
+        }
+        \item{{\bf Caso recursivo:}
+            \begin{itemize}
+                \item{Es el caso que considera todos parametros que no cumplen los
+                criterios del caso base.}
+                \item{El objetivo de este caso es simplificar los parametros y volver
+                a ejecutar la funci\'on con los parametros simplificados.}
+                \item{Este caso puede ejecutar la misma funci\'on, una o varias veces,
+                directa o indirectamente.}
+                \item{Cuando una funci\'on (o metodo) se llama a si mismo se conoce
+                como \emph{llamada recursiva}}
+            \end{itemize}
+        }
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ejemplo: Suma de numeros unitarios}
+    \begin{itemize}
+        \item{Especificar el caso base}
+        \item{Especificar los casos recursivos}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recursi\'on: Terminaci\'on}
+    \begin{itemize}
+        \item{Se comienza con una estructura definida inductivamente (como los numeros unitarios)}
+        \item{Toda \emph{llamada recursiva} debe realizarse con una \emph{instancia m\'as simple} de dicha estructura}
+        \item{Un elemento $\mathcal{A}$ es \emph{m\'as simple} que un elemento $\mathcal{B}$ si
+        el elemento $\mathcal{B}$ se puede obtener mediante inducci\'on a partir del elemento $\mathcal{A}$}
+        \item{Ejemplo: $\sigma(\sigma(0))$ es m\'as simple que $\sigma(\sigma(\sigma(0)))$}
+    \end{itemize}
+\end{frame}
+
+\end{document}
