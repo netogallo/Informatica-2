@@ -1,0 +1,132 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{algpseudocode} 
+
+\inputencoding{utf8}
+
+\mode<presentation> {
+    \usetheme{Madrid}
+}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title[Git]{Analisis Asintotico}
+\author{Ernesto Rodriguez}
+\institute{
+    Universidad del Itsmo \\
+    \medskip \textit{erodriguez@unis.edu.gt}
+}
+
+\date[\today]{}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Tiempo de Ejecuci\'on}
+\begin{itemize}
+    \item{Depende de los parametros. Ej. un arreglo ordenado
+    es m\'as facil ordenar que un arreglo desordenado.}
+    \item{Depende de la maquina que este ejecutando el programa.}
+    \item{Depende del tama\~no de los parametros. Una sequencia
+    corta es m\'as facil ordenar que una secuencia larga.}
+\end{itemize}
+{\bf Idea: } Dar el tiempo de ejecuci\'on con respecto al tama\~no de los parametros para
+el peor caso posible.
+\end{frame}
+
+\begin{frame}
+\frametitle{Tipos de Analisis}
+\begin{itemize}
+    \item{{\bf Peor caso: }$T(n)$ tiempo maximo de ejecuci\'on para un parametro con tama\~no $n$.}
+    \item{{\bf Tiempo promedio: }$T(n)$ tiempo promedio de ejecici\'on para un parametro con tama\~no $n$.
+        Requiere asumir que los parametros siguen una distribuci\'on.}
+    \item{{\bf Mejor caso: } $T(n)$ el mejor tiempo de ejecici\'on possible para un parametro
+        con tama\~no $n$.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hardware}
+\begin{itemize}
+    \item{La velocidad de ejecuci\'on de una computadora permanece constante}
+    \item{Podemos utilizar este hecho para definir una medida universal}
+\end{itemize}
+{\bf Idea: } Ignorar las diferencias que permanecen constantes y enfocarse
+en la ejecici\'on del algoritmo cuando el tama\~no de los parametros crece al infinito.
+\end{frame}
+
+\begin{frame}
+\frametitle{Limite asintotico $\Theta(n)$}
+Para toda funci\'on asintotica positiva $g(n)$, definimos:
+\[
+    \Theta(g(n))\ :=\{
+        \begin{array}{l c l}
+            \multirow{2}{*}{f(n)} & \multirow{2}{*}{:} & \exists c_1, c_2, n_0\ tq. \\
+            & & \forall n. n>n_0 \wedge 0 \leq c_1g(n) \leq f(n)\leq c_2(g(n))
+        \end{array}
+    \}
+\]
+Ejemplo: $3x^3 + 6x^2\in \Theta(n^3)$
+\\
+{\bf Nota: } Cuanod $n$ es muy grande, $n^2$ es mejor que $n^3$
+\end{frame}
+
+\begin{frame}
+\frametitle{Limite superior: Notaci\'on O}
+Para toda funci\'on $g(n)$, definimos:
+\[
+    \mathcal{O}(g(n))\ :=\{
+        \begin{array}{l c l}
+            \multirow{2}{*}{f(n)} & \multirow{2}{*}{:} & \exists c, n_0\ tq. \\
+            & & \forall n. n>n_0 \wedge 0 \leq f(n)\leq c(g(n))
+        \end{array}
+    \}
+\]
+{\bf Nota: } Se dice que una funci\'on $f(x)$ esta \emph{delimitada polinomialmente}
+si $\exists k.\ k>0\wedge f(x)\in\mathcal{O}(n^k)$
+\end{frame}
+
+\begin{frame}
+\frametitle{Limite inferior: Notaci\'on $\Omega$}
+Para toda funci\'on $g(n)$, definimos:
+\[
+    \Omega(g(n))\ :=\{
+        \begin{array}{l c l}
+            \multirow{2}{*}{f(n)} & \multirow{2}{*}{:} & \exists c, n_0\ tq. \\
+            & & \forall n. n>n_0 \wedge 0 \leq g(n)\leq c(f(n))
+        \end{array}
+    \}
+\]
+{\bf Nota: } $\Theta(g(n))\equiv \mathcal{O}(g(n))\cap \Omega(g(n))$
+\end{frame}
+
+\begin{frame}
+\frametitle{Analisis de ``InsertionSort''}
+
+\begin{algorithmic}
+\Function{Insertion-Sort}{A,n}
+\For{j=2 to n}
+    \State $key \gets A[j]$
+    \State $i \gets j-1$
+    \While{$i>0\wedge A[i]>key$}
+        \State $A[i+1] \gets A[i]$
+        \State $i \gets i-1$
+    \EndWhile
+    \State $A[i+1] \gets key$
+\EndFor
+\EndFunction
+\end{algorithmic}
+
+\end{frame}
+
+\end{document}
