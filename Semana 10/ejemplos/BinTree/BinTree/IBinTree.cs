@@ -4,4 +4,6 @@ public interface IBinTree{
     IBinTree Derecho {get;}
 
     IBinTree Izquierdo {get;}
+
+    int Sumar();
 }

@@ -22,4 +22,12 @@ public class BinaryTree : IBinTree{
 
         return $"{this.Valor} \n\t {derecho} \n\t {izquierdo}";
     }
+
+    public int Sumar()
+    {
+        int sumaIzq = this.Izquierdo == null ? 0 : this.Izquierdo.Sumar();
+        int sumaDer = this.Derecho == null ? 0 : this.Derecho.Sumar();
+
+        return sumaDer + sumaIzq + this.Valor;
+    }
 }

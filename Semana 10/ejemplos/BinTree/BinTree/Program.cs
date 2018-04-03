@@ -19,6 +19,7 @@ namespace BinTree
             );
 
             Console.WriteLine(bTree);
+            Console.WriteLine(bTree.Sumar());
         }
     }
 }
