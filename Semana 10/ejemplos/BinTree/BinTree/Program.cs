@@ -6,6 +6,7 @@ namespace BinTree
     {
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine("Hello World!");
 
             IBinTree bTree = new BinaryTree(
@@ -20,6 +21,7 @@ namespace BinTree
 
             Console.WriteLine(bTree);
             Console.WriteLine(bTree.Sumar());
+            */
         }
     }
 }

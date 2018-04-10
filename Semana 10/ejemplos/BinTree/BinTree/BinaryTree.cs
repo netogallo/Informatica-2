@@ -1,19 +1,20 @@
+using System;
 using System.Linq;
 
-public class BinaryTree : IBinTree{
-    public int Valor {get; set;}
+public class BinaryTree<U> : IBinTree<U>{
+    public U Valor {get; set;}
 
-    public IBinTree Derecho {get;}
+    public IBinTree<U> Derecho {get;}
 
-    public IBinTree Izquierdo {get;}
+    public IBinTree<U> Izquierdo {get;}
 
-    public BinaryTree(int valor, IBinTree derecho, IBinTree izquierdo){
+    public BinaryTree(U valor, IBinTree<U> derecho, IBinTree<U> izquierdo){
         this.Valor = valor;
         this.Derecho = derecho;
         this.Izquierdo = izquierdo;
     }
 
-    public BinaryTree(int valor){
+    public BinaryTree(U valor){
         this.Valor = valor;
     }
 
@@ -22,13 +23,19 @@ public class BinaryTree : IBinTree{
         string izquierdo = this.Izquierdo == null ? string.Empty : this.Izquierdo.ToString();
         return $"{this.Valor} \n\t {derecho} \n\t {izquierdo}";
     }
-
-    public int Sumar()
+    public T Reduce<T>(T inicial, Func<T, T, U, T> fn)
     {
-        int sumaIzq = this.Izquierdo == null ? 0 : this.Izquierdo.Sumar();
-        int sumaDer = this.Derecho == null ? 0 : this.Derecho.Sumar();
+        T izquierdo = this.Izquierdo == null ? inicial : this.Izquierdo.Reduce<T>(inicial, fn);
+        T derecho = this.Derecho == null ?  inicial : this.Derecho.Reduce<T>(inicial, fn);
 
-        return sumaDer + sumaIzq + this.Valor;
+        return fn(izquierdo, derecho, this.Valor);
+    }
+
+    public U[] ToArray()
+    {
+        return this.Reduce<U[]>(new U[]{}, (izquierdo, derecho, valor) => {
+            return izquierdo.Concat(new U[]{valor}).Concat(derecho).ToArray();
+        });
     }
 
     public static int[] Concatenar(int[] a, int[] b)
