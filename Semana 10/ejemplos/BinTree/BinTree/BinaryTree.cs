@@ -4,18 +4,39 @@ using System.Linq;
 public class BinaryTree<U> : IBinTree<U>{
     public U Valor {get; set;}
 
-    public IBinTree<U> Derecho {get;}
+    public IBinTree<U> Derecho {get; set;}
 
-    public IBinTree<U> Izquierdo {get;}
+    public IBinTree<U> Izquierdo {get; set;}
 
-    public BinaryTree(U valor, IBinTree<U> derecho, IBinTree<U> izquierdo){
+    private readonly Func<U,U,bool> comparacion;
+
+    public BinaryTree(
+        U valor,
+        IBinTree<U> derecho,
+        IBinTree<U> izquierdo,
+        Func<U,U, bool> comparacion){
         this.Valor = valor;
         this.Derecho = derecho;
         this.Izquierdo = izquierdo;
+        this.comparacion = comparacion;
+    }
+
+    public BinaryTree(U valor,  Func<U,U, bool> comparacion){
+        this.Valor = valor;
+        this.comparacion = comparacion;
     }
 
     public BinaryTree(U valor){
         this.Valor = valor;
+    }
+
+    public BinaryTree(
+        U valor,
+        IBinTree<U> derecho,
+        IBinTree<U> izquierdo){
+        this.Valor = valor;
+        this.Derecho = derecho;
+        this.Izquierdo = izquierdo;
     }
 
     public override string ToString(){
@@ -36,6 +57,54 @@ public class BinaryTree<U> : IBinTree<U>{
         return this.Reduce<U[]>(new U[]{}, (izquierdo, derecho, valor) => {
             return izquierdo.Concat(new U[]{valor}).Concat(derecho).ToArray();
         });
+    }
+
+    public void Insert(U valor)
+    {
+        if(comparacion(valor, Valor))
+        {
+            if(Izquierdo == null)
+            {
+                Izquierdo = new BinaryTree<U>(valor, comparacion);
+            }
+            else
+            {
+                Izquierdo.Insert(valor);
+            }
+        }
+        else
+        {
+            if(Derecho == null)
+            {
+                Derecho = new BinaryTree<U>(valor, comparacion);
+            }
+            else
+            {
+                Derecho.Insert(valor);
+            }
+        }
+    }
+
+    public U BinarySearch(U obj)
+    {
+
+        new object();
+
+        if(obj.Equals(Valor))
+        {
+            return Valor;
+        }
+
+        if(comparacion(obj, Valor) && Izquierdo != null)
+        {
+            return Izquierdo.BinarySearch(obj);
+        }
+        else if(Derecho != null)
+        {
+            return Derecho.BinarySearch(obj);
+        }
+
+        throw new Exception();
     }
 
     public static int[] Concatenar(int[] a, int[] b)
