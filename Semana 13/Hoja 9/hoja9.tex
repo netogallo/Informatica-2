@@ -102,7 +102,7 @@
 
 \begin{center}
         \horrule{0.5pt}
-        \huge{Hoja de trabajo \#8} \\
+        \huge{Hoja de trabajo \#9} \\
         \large{Fecha de entrega: 03 de Mayo, 2018 - 11:59pm} \\
         \horrule{1pt}
 \end{center}
@@ -144,7 +144,7 @@ arreglo y el segundo parametro es la posici\'on siendo considerada. Este metodo 
 lo siguiente:
 \begin{enumerate}
         \item{Se define el indice actual ($i$), el cual se inicializa con el segundo parametro del metodo.}
-        \item{Dado el valor ubicado en $i$ y su hijo derecho e izquierdo, seleccionar el valor m\'as peque\~no
+        \item{Dado el valor ubicado en $i$ y su hijo derecho e izquierdo, seleccionar el valor m\'as grande
         de los tres. Ignorar valores que esten fuera del arreglo. }
         \item{Si el valor seleccionado en el paso anterior es diferente del valor ubicado en $i$,
         intercambiar dicho valor con el valor ubicado en $i$.}
@@ -157,7 +157,7 @@ Definir un procedimiento llamado \texttt{Heapify}\cite{HeapSort} de tipo $\matht
 \rightarrow \mathtt{void}$ el cual recibe un arreglo y lo convierte a su representaci\'on como
 \emph{heap}. El procedimiento debe hacer lo siguiente:
 \begin{enumerate}
-        \item{Comenzar seleccionando el indice ($i$) del padre del ultimo valor en el arreglo (\texttt{Length-1})}
+        \item{Comenzar seleccionando el indice ($i$), el padre del ultimo valor en el arreglo (\texttt{Length-1})}
         \item{Llamar al metodo \texttt{ShiftDown} con el arreglo y el indice $i$}
         \item{Decrementar el indice $i$ una unidad}
         \item{Repetir hasta que $i=0$}
